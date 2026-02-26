@@ -192,21 +192,31 @@ export default Dashboard;
 
 ## 🏗 System Architecture
 
-```
-User Dashboard
-      │
-      ▼
-Backend API
-      │
-      ├── LCA Engine
-      ├── AI Prediction Models
-      └── Recommendation Engine
-      │
-      ▼
-Database
-      │
-      ▼
-Industrial Input Data
+```mermaid
+flowchart TD
+    A[User Opens TerraLens App] --> B[Android Mobile UI]
+    
+    B --> C[Camera Capture Module]
+    B --> D[Location Permission Manager]
+    
+    C --> E[Image Processing Layer]
+    D --> F[GPS Location Provider]
+    
+    F --> G[Latitude and Longitude Fetch]
+    G --> H[Geocoding Service]
+    H --> I[Address City Country Extraction]
+    
+    E --> J[Photo Metadata Combiner]
+    I --> J
+    
+    J --> K[Local Storage Manager]
+    K --> L[SQLite Database]
+    
+    L --> M[Image and Location Records]
+    
+    M --> N[Gallery and Map Viewer]
+    N --> O[Image Preview Screen]
+    N --> P[Location Details Display]
 ```
 
 ---
